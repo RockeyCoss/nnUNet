@@ -24,4 +24,4 @@ class nnUNetTransTrainer(nnUNetTrainerV2):
     def initialize_network(self):
         # TODO: initialize network
         pass
-        
+
