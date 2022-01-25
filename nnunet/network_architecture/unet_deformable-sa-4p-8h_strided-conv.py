@@ -185,6 +185,13 @@ class PatchEmbed(nn.Module):
             x = self.norm(x)
         return x, out_size
 
+class TransformerBlock(nn.Module):
+    def __init__(self,
+                 channels,
+                 num_transformer=2,
+                 mlp_ratio=4):
+        super(TransformerBlock, self).__init__()
+
 
 class DeformableUNet(nn.Module):
     def __init__(self,
@@ -197,6 +204,8 @@ class DeformableUNet(nn.Module):
                  num_heads=8,
                  num_points=4,
                  mlp_ratio=4,
+                 stage_num=5,
+                 trans_per_stage=2,
                  norm_cfg=None):
         super(DeformableUNet, self).__init__()
         self.patch_embedding = PatchEmbed(in_channels=in_channels,
@@ -208,3 +217,4 @@ class DeformableUNet(nn.Module):
                                           bias=True,
                                           norm_cfg=patch_norm)
         # TODO: add positional embedding
+        for index in
