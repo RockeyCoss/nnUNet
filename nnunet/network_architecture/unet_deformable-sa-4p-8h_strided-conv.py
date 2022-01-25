@@ -204,7 +204,7 @@ class DeformableUNet(nn.Module):
                  num_heads=8,
                  num_points=4,
                  mlp_ratio=4,
-                 stage_num=5,
+                 num_stage=5,
                  trans_per_stage=2,
                  norm_cfg=None):
         super(DeformableUNet, self).__init__()
@@ -217,4 +217,9 @@ class DeformableUNet(nn.Module):
                                           bias=True,
                                           norm_cfg=patch_norm)
         # TODO: add positional embedding
-        for index in
+        self.encoder = nn.ModuleList()
+        self.decoder = nn.ModuleList()
+        for index in range(num_points):
+            encoder_blocks = []
+            if index == 0:
+
